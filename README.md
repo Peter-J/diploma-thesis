@@ -16,7 +16,7 @@ There is code to simulate Stochastic Reaction Networks using [MATLAB](https://gi
 
 ###Thanks to:
 * The [sys-bio group](https://github.com/sys-bio) and their [Tellurium documentation](http://tellurium.readthedocs.io/en/latest/). A good documentation / introduction is an important key to using any command-line software.
-* [Dr. Ernst August Freiherr von Hammerstein](https://www.finance.uni-freiburg.de/mitarbeiter/dr.-ernst-august-frhr.-v.-hammerstein) His statistics lab course (using R) was the sound foundation to my R capabilities.
+* [Dr. Ernst August Freiherr von Hammerstein](https://www.finance.uni-freiburg.de/mitarbeiter/dr.-ernst-august-frhr.-v.-hammerstein), his statistics lab course (using R) was the sound foundation to my R capabilities.
 * My thesis supervisor [Prof. Dr. Peter Pfaffelhuber](https://www.stochastik.uni-freiburg.de/professoren/pfaffelhuber), who sparked my interest in systems-biology.
 * All the friends and people I could talk to, even though systems-biology & programming is way outside their daily business.
 
