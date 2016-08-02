@@ -28,4 +28,4 @@ end'''
 
 rr = te.loadAntimonyModel(antStr)
 result = rr.simulate(0, 40, 500)
-te.plotWithLegend (rr, result)
+te.plot(rr, result)
