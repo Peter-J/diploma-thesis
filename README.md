@@ -45,6 +45,6 @@ I am not responsible for anything you do or assume, for anything that happens to
 
 If I write / say or by any other means of communication or telepathy state something that could be understood as `you have to` or something similar, I expect you to understand it as a suggestion and not as a permission to stop using your own brain / stop being liable on your own.
 
-Especially: I do not grant, and never have I granted you explicit or implicit rights to anything. I am not a lawyer, I use my common sense and if you do so too, we will most likely never have any legal dispute. I will not get a lawyer to modify the above to be a real licence, I for myself think there are better things to spend mony on.
+Especially: I do not grant, and never have I granted you explicit or implicit rights to anything. I am not a lawyer, I use my common sense and if you do so too, we will most likely never have any legal dispute. I will not get a lawyer to modify the above to be a real licence, I for myself think there are better things to spend money on.
 
 Shorthand: Use your common sense.
