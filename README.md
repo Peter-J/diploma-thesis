@@ -18,7 +18,7 @@ A link will be added here to the simulation data already created.
 * You can do pretty much what ever you want, but
 * you have to attribute
 * you have to use the same licence
-* you have to publish source code
+* you have to publish your source code
 * you may not get rich using this code, i.e.:
   * getting paid or being funded (e.g. as academic staff, scientist) and using it is __admissible__, even though using something for work is concidered commercial use.
   * win a prize  / file a patent for a drug / scientific discovery / software or whatever you developed, while using this code __without__ giving an adequate share to the guys from [sys-bio](https://github.com/sys-bio), any contributor to this project and  me is __not admissible__.
