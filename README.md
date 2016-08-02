@@ -15,7 +15,7 @@ There is code to simulate Stochastic Reaction Networks using [MATLAB](https://gi
 * Fork this project -> change it -> make a pull request.
 
 #Licence goal/idea
-This code has copyright protection owned by me or others. In cases where I am the copyright owner: get an intuition of what I am ok with, as stated here or ask me. In any other case: see Attribution below and ask them / read their licence. In doubt: It is your responsibility to have no doubt before doing anything that could infringe any copyright (or other) law.
+This code has copyright protection owned by me or others. In cases where I am the copyright owner: get an intuition of what I am ok with, as stated here or ask me. In any other case: see Attribution below and ask them / read their licence. In doubt: It is your responsibility to have no doubt before doing anything that could infringe any copyright, or any law.
 
 **This is not a licence, this is an idea for a licence.** I would prefere something in the range of:
 * You can do pretty much what ever you want, but
