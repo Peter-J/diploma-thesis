@@ -1,0 +1,1 @@
+*/2 * * * * /home/USER/keep-running.sh >> "/home/USER/$(uname -n).cronLog" 2>&1
