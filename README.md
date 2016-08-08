@@ -8,7 +8,7 @@ There is code to simulate Stochastic Reaction Networks using [MATLAB](https://gi
 
 ###Todo:
 - [ ] Add a link to the simulation data already created.
-- [ ] Exchange the plot function in the Simulation_linux.py file to work
+- [x] Exchange the plot function in the Simulation_linux.py file to work
 
 ## How to contribute: 
 * Open an [issue](https://github.com/Peter-J/diploma-thesis/issues) or
