@@ -95,6 +95,108 @@ def info(n): #Erzeugen der Verbose-Informationen
 		timeString = " finish="
 	print(str(time.strftime("%H:%M:%S",time.localtime()))+" "+str(socket.gethostname())+" L="+fmt(count)+" N="+fmt(N)+" P="+fmt(simuliertePfade)+" R="+fmt(Reactions)+" t="+ZeitFormat(wallTime)+" R/P="+fmt(Reactions/simuliertePfade)+" R/t="+fmt(float(Reactions)/wallTime)+" t/P="+fmt(float(wallTime)/float(simuliertePfade))+timeString+ZeitFormat(timeTo))
 	sys.stdout.flush()
+def plot(self, result=None, loc='upper right', show=True,        #----------- start copy&paste from tellurium.py
+             xlabel=None, ylabel=None, title=None, xlim=None, ylim=None,
+             xscale='linear', yscale="linear", grid=False, **kwargs):
+        """ Plot roadrunner simulation data.
+
+        Plot is called with simulation data to plot as the first argument. If no data is provided the data currently
+        held by roadrunner generated in the last simulation is used. The first column is considered the x axis and
+        all remaining columns the y axis.
+        If the result array has no names, than the current r.selections are used for naming. In this case the
+        dimension of the r.selections has to be the same like the number of columns of the result array.
+
+        Curves are plotted in order of selection (columns in result).
+
+        In addition to the listed keywords plot supports all matplotlib.pyplot.plot keyword arguments,
+        ::
+        like color, alpha, linewidth, linestyle, marker, ...
+
+            sbml = te.getTestModel('feedback.xml')
+            r = te.loadSBMLModel(sbml)
+            s = r.simulate(0, 100, 201)
+            r.plot(s, loc="upper right", linewidth=2.0, lineStyle='-', marker='o', markersize=2.0, alpha=0.8,
+                   title="Feedback Oscillation", xlabel="time", ylabel="concentration", xlim=[0,100], ylim=[-1, 4])
+
+        :param result: results data to plot
+        :type result: numpy array
+        :param loc: location of plot legend (standard matplotlib arguments). If loc=None or loc=False no legend is shown.
+        :type loc: str or None
+        :param show: show the plot, use show=False to plot multiple simulations in one plot
+        :type show: bool
+        :param xlabel: x-axis label
+        :type xlabel: str
+        :param ylabel: y-axis label
+        :type ylabel: str
+        :param title: plot title
+        :type title: str
+        :param xlim: limits on x-axis
+        :type xlim: tuple [start, end]
+        :param ylim: limits on y-axis
+        :type ylim: tuple [start, end]
+        :param xscale: 'linear' or 'log' scale for x-axis
+        :type xscale: 'str'
+        :param yscale: 'linear' or 'log' scale for y-axis
+        :type yscale: 'str'
+        :param grid: show grid
+        :type grid: bool
+        :param kwargs: additional matplotlib keywords like marker, lineStyle, color, alpha, ...
+        :return:
+        :rtype:
+        """
+        if result is None:
+            result = self.getSimulationData()
+        if loc is False:
+            loc = None
+
+        if 'linewidth' not in kwargs:
+            kwargs['linewidth'] = 2.0
+
+        # get the names
+        names = result.dtype.names
+        if names is None:
+            names = self.selections
+
+        # reset color cycle (repeated simulations have the same colors)
+        plt.gca().set_prop_cycle(None)
+
+        # make plot
+        Ncol = result.shape[1]
+        if len(names) != Ncol:
+            raise Exception('Legend names must match result array')
+        for k in range(1, Ncol):
+            if loc is None:
+                # no labels if no legend
+                plt.plot(result[:, 0], result[:, k], **kwargs)
+            else:
+                plt.plot(result[:, 0], result[:, k], label=names[k], **kwargs)
+
+            cmap = plt.get_cmap('Blues')
+
+        # labels
+        if xlabel is None:
+            xlabel = names[0]
+        plt.xlabel(xlabel)
+        if ylabel is not None:
+            plt.ylabel(ylabel)
+        if title is not None:
+            plt.title(title)
+        if xlim is not None:
+            plt.xlim(xlim)
+        if ylim is not None:
+            plt.ylim(ylim)
+        # axis and grids
+        plt.xscale(xscale)
+        plt.yscale(yscale)
+        plt.grid(grid)
+
+        # show legend
+        if loc is not None:
+            plt.legend(loc=loc)
+        # show plot
+        if show:
+            plt.show()
+        return plt           #----------- end copy&paste from tellurium.py
 for count in range(outerLoop): 
 	if (verbose >=3): print("outerLoop="+str(count))
 	for N in Nrange: 
@@ -112,7 +214,7 @@ for count in range(outerLoop):
 			if doplot:
 				toplot = numpy.delete(s, numpy.s_[0:1],axis=1)
 				r.selections=selectToPlot
-				r.plot(toplot, show=False, loc=None ,alpha=1/float(AnzahlPfade), rasterized=False,title="N="+str(N)+", #Paths="+str(AnzahlPfade))
+				plot(r,toplot, show=False, loc=None ,alpha=1/float(AnzahlPfade), rasterized=False,title="N="+str(N)+", #Paths="+str(AnzahlPfade))
 				if (k==0) and plotlegend:				
 					#leg=plt.legend(selectToPlot[1:],loc=3,ncol=10,mode="expand",borderaxespad=0.,bbox_to_anchor=(0., 1.02, 1., .102)) #anderer Legenden-Stil
 					leg=plt.legend(selectToPlot[1:]) #Stil fuer Legende					
