@@ -42,7 +42,7 @@ plotlegend = True #Legende plotten?
 verbose = 2 #Verbose level: 0 = garnicht, 1 = Statistik 1x je outerLoop, 2 = Statistik nach jedem N, 3 = +Schleifenzaehler (sehen obs haengt)
 Nscale=100
 #Produkt der naechsten 3 Variablen ist die Anzahl der insg. simulierten Pfade
-outerLoop = 1 #Anzahl wiederholungen festlegen (multipliziert sich mit population zur Anzahl der simulierten Pfade je N)
+outerLoop = 1 #Anzahl wiederholungen festlegen (multipliziert sich mit AnzahlPfade zur Anzahl der simulierten Pfade je N)
 Nrange= range(3) #Bereich von N festlegen. range(5) ==  0,1,2,3,4. Daher Multiplikator N = (N+1)*Nscale
 AnzahlPfade = 40 #Anzahl wiederholungen festlegen (multipliziert sich mit outerLoop). Fuer schoene Plots hier Wert 40-100. Fuer grosse N: doplot=False, hier 1, dafuer bei outerLoop gewuenschte Werte eintragen.
 #----------------------------
