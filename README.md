@@ -6,8 +6,14 @@ The code in the additional files can be used to keep the simulation running base
 
 There is code to simulate Stochastic Reaction Networks using [MATLAB](https://github.com/Peter-J/diploma-thesis/blob/master/MatlabSimBioSSA.m) and [R](https://github.com/Peter-J/diploma-thesis/blob/master/GillespieSSAusingR.R) aswell, but this was just written for comparison. **Do not expect these two files** ([MatlabSimBioSSA.m](https://github.com/Peter-J/diploma-thesis/blob/master/MatlabSimBioSSA.m) and [GillespieSSAusingR.R](https://github.com/Peter-J/diploma-thesis/blob/master/GillespieSSAusingR.R)) **to be maintained.**
 
+###Simulation-Data
+The simulation-data can be downloaded here: https://goo.gl/YhY4RW
+
+Those two folders do not contain the same data.
+The data in PlotDensityOld was generated using my private pc, the data in PlotDensity was generated using the computation-pool from my university.
+
 ###Todo:
-- [ ] Add a link to the simulation data already created.
+- [x] Add a link to the simulation data already created.
 - [x] Exchange the plot function in the Simulation_linux.py file to work
 
 ## How to contribute: 
