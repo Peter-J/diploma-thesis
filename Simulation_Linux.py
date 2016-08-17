@@ -39,13 +39,13 @@ tStart = 0	#Start- und Endzeit der Simulation
 tEnd = 3.01
 doplot = True #plotten?
 plotlegend = True #Legende plotten?
-verbose = 2 #Verbose level: 0 = garnicht, 1 = Statistik 1x je outerLoop, 2 = Statistik nach jedem N, 3 = +Schleifenzaehler (sehen obs haengt)
+verbose = 2 #Verbose level: 0 = garnicht, 1 = Statistik 1x je outerLoop, 2 = Statistik nach jedem N, 3 = +Schleifenzaehler (Haengt sich die Simulation auf?)
 Nscale=100
 #Produkt der naechsten 3 Variablen ist die Anzahl der insg. simulierten Pfade
-outerLoop = 1 #Anzahl wiederholungen festlegen (multipliziert sich mit AnzahlPfade zur Anzahl der simulierten Pfade je N)
+outerLoop = 1 #Anzahl Wiederholungen festlegen (multipliziert sich mit AnzahlPfade zur Anzahl der simulierten Pfade je N)
 Nrange= range(3) #Bereich von N festlegen. range(5) ==  0,1,2,3,4. Daher Multiplikator N = (N+1)*Nscale
-AnzahlPfade = 40 #Anzahl wiederholungen festlegen (multipliziert sich mit outerLoop). Fuer schoene Plots hier Wert 40-100. Fuer grosse N: doplot=False, hier 1, dafuer bei outerLoop gewuenschte Werte eintragen.
-#----------------------------
+AnzahlPfade = 40 #Anzahl Wiederholungen festlegen (multipliziert sich mit outerLoop). Fuer schoene Plots hier Wert 40-100. Fuer grosse N: doplot=False, hier 1, dafuer bei outerLoop gewuenschte Werte eintragen.
+#--------------stay-above-this-line----- #Modell laden, kann auch URL sein z.B. von www.biomodels.net---------
 if os.path.isfile(antStr):   #----------- start copy&paste from tellurium.py
 	code = antimony.loadAntimonyFile(antStr)
 else:
@@ -55,9 +55,11 @@ if code < 0:
 mid = antimony.getMainModuleName()
 sbml = antimony.getSBMLString(mid)
 r = roadrunner.RoadRunner(sbml) #----------- end copy&paste from tellurium.py
-r.setIntegrator('gillespie')
-r.getIntegrator().setValue('variable_step_size', True)
+#----------------the-next-three-lines-should-be-user-adapted--------
+r.setIntegrator('gillespie')  #Integrator auswaehlen. Andere unterstuetzen z.B. ODEs
+r.getIntegrator().setValue('variable_step_size', True) #Parameter fuer Integrator setzen, anderer Integrator unterstuetzt andere Parameter
 Config.setValue(Config.MAX_OUTPUT_ROWS,pow(10,7))  #bei 64-bit pow(10,11) oder weniger bei wenig Arbeitsspeicher
+#-----------end-user-parameters-----------
 Reactions = 0
 start_time = time.time()
 selectToSave = ['N'] + selectToPlot
@@ -206,7 +208,7 @@ for count in range(outerLoop):
 		for k in range(AnzahlPfade):
 			if (verbose >=3): print("PfadNo. "+str(k))
 			r.reset()
-			s = r.simulate(tStart, tEnd) #Simulationszeit anpassen
+			s = r.simulate(tStart, tEnd)
 			simuliertePfade += 1
 			#numpy.savetxt(f,s,fmt='%15f',delimiter=",")  #Nur auskommentieren wenn gesamter Pfad gespeichert werden soll, frisst Festplattenspeicher
 			for t in timePoints: #Speichert letzten Simulationsstand zur Zeit t
