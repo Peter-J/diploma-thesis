@@ -1,4 +1,4 @@
-%function f = michel(k,doplot)
+%function f = MichaelisMenten(k,doplot)
 k = 10; doplot = 0;
 tic;
 for n = 1:k
